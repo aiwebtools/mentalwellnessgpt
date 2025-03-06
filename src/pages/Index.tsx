@@ -14,7 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <EmergencyDisclaimer />
+      <div className="mt-[60px]">
+        <EmergencyDisclaimer />
+      </div>
       <main>
         <Hero />
         <Features />
