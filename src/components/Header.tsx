@@ -34,57 +34,60 @@ const Header: React.FC = () => {
         isScrolled ? 'bg-cyberpunk-black/80 backdrop-blur-md shadow-md' : 'bg-transparent'
       )}
     >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" className="group z-10">
-          <Logo className="group-hover:scale-105 transition-transform" />
-        </a>
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+          {/* Logo */}
+          <a href="/" className="group self-start md:self-auto">
+            <Logo className="group-hover:scale-105 transition-transform" />
+          </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link, index) => (
-            <a 
-              key={index} 
-              href={link.href}
-              className={cn(
-                'text-sm font-medium transition-all duration-300',
-                link.name === 'Access Mental Wellness GPT' 
-                  ? 'py-2 px-4 rounded-lg bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue text-black shadow-neon-cyan hover:shadow-none btn-glow'
-                  : 'text-white/80 hover:text-cyberpunk-cyan relative after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-cyberpunk-cyan hover:after:w-full after:transition-all after:duration-300'
-              )}
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-3 lg:space-x-6 mt-4 md:mt-0">
+            {navLinks.map((link, index) => (
+              <a 
+                key={index} 
+                href={link.href}
+                className={cn(
+                  'text-sm font-medium transition-all duration-300 whitespace-nowrap',
+                  link.name === 'Access Mental Wellness GPT' 
+                    ? 'py-2 px-4 rounded-lg bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue text-black shadow-neon-cyan hover:shadow-none btn-glow'
+                    : 'text-white/80 hover:text-cyberpunk-cyan relative after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-cyberpunk-cyan hover:after:w-full after:transition-all after:duration-300'
+                )}
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden z-10 text-white p-2 rounded-lg glass-card"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden absolute top-4 right-4 z-10 text-white p-2 rounded-lg glass-card"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-        {/* Mobile Navigation */}
-        <div className={cn(
-          'fixed inset-0 bg-cyberpunk-black/90 backdrop-blur-lg transition-all duration-300 md:hidden flex flex-col justify-center items-center space-y-6',
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        )}>
-          {navLinks.map((link, index) => (
-            <a 
-              key={index} 
-              href={link.href}
-              className={cn(
-                'text-lg font-medium transition-all duration-300',
-                link.name === 'Access Mental Wellness GPT' 
-                  ? 'py-3 px-6 rounded-lg bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue text-black shadow-neon-cyan'
-                  : 'text-white hover:text-cyberpunk-cyan'
-              )}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
+          {/* Mobile Navigation */}
+          <div className={cn(
+            'fixed inset-0 bg-cyberpunk-black/90 backdrop-blur-lg transition-all duration-300 md:hidden flex flex-col justify-center items-center space-y-6 z-40',
+            isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          )}>
+            {navLinks.map((link, index) => (
+              <a 
+                key={index} 
+                href={link.href}
+                className={cn(
+                  'text-lg font-medium transition-all duration-300',
+                  link.name === 'Access Mental Wellness GPT' 
+                    ? 'py-3 px-6 rounded-lg bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue text-black shadow-neon-cyan'
+                    : 'text-white hover:text-cyberpunk-cyan'
+                )}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>

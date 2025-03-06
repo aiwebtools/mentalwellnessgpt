@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { AlertTriangle, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 const EmergencyDisclaimer: React.FC = () => {
   return (
-    <div className="w-full bg-cyberpunk-pink/10 border-y border-cyberpunk-pink/30 py-3 px-4">
+    <div className="w-full bg-cyberpunk-pink/10 border-y border-cyberpunk-pink/30 pt-20 pb-3 px-4 mt-16">
       <div className="container mx-auto flex items-center justify-center gap-3 text-sm md:text-base">
         <AlertCircle className="text-cyberpunk-pink flex-shrink-0" size={20} />
         <p className="text-white/90 font-medium text-center">
