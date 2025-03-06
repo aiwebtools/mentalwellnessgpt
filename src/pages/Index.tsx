@@ -8,11 +8,13 @@ import FAQ from '@/components/FAQ';
 import Disclaimer from '@/components/Disclaimer';
 import VideoSection from '@/components/VideoSection';
 import Footer from '@/components/Footer';
+import EmergencyDisclaimer from '@/components/EmergencyDisclaimer';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <EmergencyDisclaimer />
       <main>
         <Hero />
         <Features />
