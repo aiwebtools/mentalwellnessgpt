@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
       <div className="absolute -top-[100px] -left-[100px] w-[300px] h-[300px] bg-gradient-radial from-cyberpunk-pink/10 to-transparent pointer-events-none"></div>
       
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <Logo />
@@ -90,28 +90,13 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="pt-12 mt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 mt-8 border-t border-white/10 text-center md:text-left">
           <a 
             href="https://www.aiwebtools.ai" 
             className="text-white/70 hover:text-white transition-colors"
           >
             © 2025 AI WEB TOOLS LLC All rights reserved.
           </a>
-          
-          <div className="flex items-center gap-4">
-            <span className="text-xs uppercase tracking-wider text-white/50">Connect with us</span>
-            <div className="flex gap-4">
-              {['twitter', 'facebook', 'instagram', 'linkedin'].map(platform => (
-                <a 
-                  key={platform} 
-                  href="https://www.aiwebtools.ai"
-                  className="h-8 w-8 rounded-full glass-card flex items-center justify-center hover:bg-cyberpunk-blue/20 transition-colors"
-                >
-                  <span className="capitalize text-xs">{platform[0]}</span>
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </footer>
