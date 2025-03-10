@@ -9,10 +9,12 @@ import Disclaimer from '@/components/Disclaimer';
 import VideoSection from '@/components/VideoSection';
 import Footer from '@/components/Footer';
 import EmergencyDisclaimer from '@/components/EmergencyDisclaimer';
+import DisclaimerPopup from '@/components/DisclaimerPopup';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <DisclaimerPopup />
       <Header />
       <div className="mt-[60px]">
         <EmergencyDisclaimer />
