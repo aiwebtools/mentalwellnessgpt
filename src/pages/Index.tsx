@@ -10,6 +10,7 @@ import VideoSection from '@/components/VideoSection';
 import Footer from '@/components/Footer';
 import EmergencyDisclaimer from '@/components/EmergencyDisclaimer';
 import DisclaimerPopup from '@/components/DisclaimerPopup';
+import ElevenLabsWidget from '@/components/ElevenLabsWidget';
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
         <VideoSection />
       </main>
       <Footer />
+      <ElevenLabsWidget />
     </div>
   );
 };
