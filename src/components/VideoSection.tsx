@@ -1,36 +1,18 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 const VideoSection: React.FC = () => {
   const videoRef = useRef<HTMLIFrameElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && videoRef.current) {
-            // YouTube iframe API parameters to start automatically and set 1080p quality
-            // This might not always work due to YouTube's policies on autoplay
-            const src = videoRef.current.src;
-            if (!src.includes('autoplay=1')) {
-              videoRef.current.src = `${src}&autoplay=1&mute=0&vq=hd1080`;
-            }
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+  const handlePlayVideo = () => {
+    if (videoRef.current && !isPlaying) {
+      // Update the YouTube iframe src to start playing at 1080p quality
+      const baseUrl = videoRef.current.src.split('?')[0];
+      videoRef.current.src = `${baseUrl}?enablejsapi=1&autoplay=1&mute=0&vq=hd1080`;
+      setIsPlaying(true);
     }
-
-    return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
-    };
-  }, []);
+  };
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -63,6 +45,20 @@ const VideoSection: React.FC = () => {
               
               {/* Video embed */}
               <div className="relative aspect-video">
+                {!isPlaying && (
+                  <div 
+                    className="absolute inset-0 bg-black/50 flex items-center justify-center cursor-pointer z-20"
+                    onClick={handlePlayVideo}
+                  >
+                    <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-cyberpunk-purple" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <iframe
                   ref={videoRef}
                   width="100%"
