@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import EmergencyDisclaimer from '@/components/EmergencyDisclaimer';
 import DisclaimerPopup from '@/components/DisclaimerPopup';
 import ElevenLabsWidget from '@/components/ElevenLabsWidget';
+import HeyGenAvatar from '@/components/HeyGenAvatar';
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
       </main>
       <Footer />
       <ElevenLabsWidget />
+      <HeyGenAvatar />
     </div>
   );
 };
