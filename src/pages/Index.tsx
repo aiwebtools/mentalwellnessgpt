@@ -23,6 +23,7 @@ const Index = () => {
       </div>
       <main>
         <Hero />
+        <HeyGenAvatar />
         <Features />
         <Testimonials />
         <FAQ />
@@ -31,7 +32,6 @@ const Index = () => {
       </main>
       <Footer />
       <ElevenLabsWidget />
-      <HeyGenAvatar />
     </div>
   );
 };

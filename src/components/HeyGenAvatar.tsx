@@ -1,23 +1,60 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const HeyGenAvatar: React.FC = () => {
-  useEffect(() => {
-    // This effect will run only on client-side after component mounts
-    const script = document.createElement('script');
-    script.innerHTML = `!function(window){const host="https://labs.heygen.com",url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJBbm5fVGhlcmFwaXN0X3B1YmxpYyIsInBy%0D%0AZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzc1ZTBhODdiN2Zk%0D%0AOTRmMDk4MWZmMzk4YjU5M2RkNDdmXzQ1NTcwL3ByZXZpZXdfdGFsa180LndlYnAiLCJuZWVkUmVt%0D%0Ab3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImRmNDAxMmY5Mjk1NjQwYjdi%0D%0ANWJmMmJhNTY3NjAxMDI3IiwidXNlcm5hbWUiOiI5ZDY3MTY1OGYxZjk0YjcxOWIyZTU4ODYzNWQw%0D%0AMWY3YiJ9&inIFrame=1",clientWidth=document.body.clientWidth,wrapDiv=document.createElement("div");wrapDiv.id="heygen-streaming-embed";const container=document.createElement("div");container.id="heygen-streaming-container";const stylesheet=document.createElement("style");stylesheet.innerHTML=\`\\n  #heygen-streaming-embed {\\n    z-index: 9999;\\n    position: fixed;\\n    left: 40px;\\n    bottom: 40px;\\n    width: 200px;\\n    height: 200px;\\n    border-radius: 50%;\\n    border: 2px solid #fff;\\n    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);\\n    transition: all linear 0.1s;\\n    overflow: hidden;\\n\\n    opacity: 0;\\n    visibility: hidden;\\n  }\\n  #heygen-streaming-embed.show {\\n    opacity: 1;\\n    visibility: visible;\\n  }\\n  #heygen-streaming-embed.expand {\\n    \${clientWidth<540?"height: 266px; width: 96%; left: 50%; transform: translateX(-50%);":"height: 366px; width: calc(366px * 16 / 9);"}\\n    border: 0;\\n    border-radius: 8px;\\n  }\\n  #heygen-streaming-container {\\n    width: 100%;\\n    height: 100%;\\n  }\\n  #heygen-streaming-container iframe {\\n    width: 100%;\\n    height: 100%;\\n    border: 0;\\n  }\\n  \`;const iframe=document.createElement("iframe");iframe.allowFullscreen=!1,iframe.title="Streaming Embed",iframe.role="dialog",iframe.allow="microphone",iframe.src=url;let visible=!1,initial=!1;window.addEventListener("message",(e=>{e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&("init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",initial)):"show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):"hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible)))})),container.appendChild(iframe),wrapDiv.appendChild(stylesheet),wrapDiv.appendChild(container),document.body.appendChild(wrapDiv)}(window);`;
-    document.body.appendChild(script);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-    return () => {
-      // Cleanup if the component unmounts
-      const existingEmbed = document.getElementById('heygen-streaming-embed');
-      if (existingEmbed) {
-        document.body.removeChild(existingEmbed);
-      }
-    };
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    // Clear any existing content
+    containerRef.current.innerHTML = '';
+    
+    // Create the iframe element
+    const iframe = document.createElement('iframe');
+    iframe.allowFullscreen = false;
+    iframe.title = "Bean AI Assistant";
+    iframe.role = "dialog";
+    iframe.allow = "microphone";
+    iframe.src = "https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJBbm5fVGhlcmFwaXN0X3B1YmxpYyIsInBy%0D%0AZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzc1ZTBhODdiN2Zk%0D%0AOTRmMDk4MWZmMzk4YjU5M2RkNDdmXzQ1NTcwL3ByZXZpZXdfdGFsa180LndlYnAiLCJuZWVkUmVt%0D%0Ab3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImRmNDAxMmY5Mjk1NjQwYjdi%0D%0ANWJmMmJhNTY3NjAxMDI3IiwidXNlcm5hbWUiOiI5ZDY3MTY1OGYxZjk0YjcxOWIyZTU4ODYzNWQw%0D%0AMWY3YiJ9&inIFrame=1";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "0";
+    
+    // Append the iframe to the container
+    containerRef.current.appendChild(iframe);
   }, []);
 
-  return null; // This component doesn't render anything visible
+  return (
+    <section className="py-16 bg-cyberpunk-darkPurple/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">
+            <span className="text-gradient-multi">Meet Bean</span> - Your AI Mental Health Assistant
+          </h2>
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            Interact directly with Bean's AI avatar. Click to start a conversation and experience 
+            personalized mental health support.
+          </p>
+        </div>
+        
+        <div 
+          ref={containerRef}
+          className="relative w-full max-w-4xl mx-auto aspect-video rounded-xl overflow-hidden glass-card"
+          style={{ 
+            minHeight: "400px",
+            boxShadow: "0 0 20px rgba(0, 255, 255, 0.2)"
+          }}
+        >
+          {/* The iframe will be inserted here by the useEffect */}
+        </div>
+        
+        <div className="mt-6 text-center text-sm text-white/60">
+          Click to speak with Bean. Allow microphone access for the best experience.
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default HeyGenAvatar;
