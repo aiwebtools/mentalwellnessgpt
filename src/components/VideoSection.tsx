@@ -23,15 +23,15 @@ const VideoSection: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="px-3 py-1 text-xs rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/90 font-medium inline-block mb-4">
-              Our Inspiration
+              Important Disclaimer
             </span>
             
             <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-              The Story Behind <span className="text-gradient-multi">Mental Wellness GPT</span>
+              <span className="text-gradient-multi">Disclaimer</span>
             </h2>
             
             <p className="text-white/70 max-w-2xl mx-auto">
-              My inspiration for this tool is based on a true story. We must help others to help ourselves.
+              This AI tool is not a substitute for professional medical advice, diagnosis, or treatment. Please consult with qualified healthcare professionals for serious mental health concerns.
             </p>
           </div>
           
