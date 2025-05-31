@@ -63,7 +63,7 @@ const VideoSection: React.FC = () => {
                   ref={videoRef}
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/jviXavNWgkA?enablejsapi=1"
+                  src="https://www.youtube.com/embed/_e6DtLUv-2Q?enablejsapi=1"
                   title="Mental Wellness GPT Inspiration"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
