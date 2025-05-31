@@ -23,12 +23,12 @@ const Index = () => {
       </div>
       <main>
         <Hero />
+        <VideoSection />
         <HeyGenAvatar />
         <Features />
         <Testimonials />
         <FAQ />
         <Disclaimer />
-        <VideoSection />
       </main>
       <Footer />
       <ElevenLabsWidget />
