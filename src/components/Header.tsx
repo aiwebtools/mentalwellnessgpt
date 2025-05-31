@@ -71,6 +71,8 @@ const Header: React.FC = () => {
               <a 
                 key={index} 
                 href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={cn(
                   'text-sm font-medium transition-all duration-300 whitespace-nowrap',
                   link.name === 'Access Mental Wellness GPT' 
@@ -93,6 +95,8 @@ const Header: React.FC = () => {
                 <a 
                   key={index} 
                   href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className={cn(
                     'text-xl font-medium transition-all duration-300 w-full text-center py-3',
                     link.name === 'Access Mental Wellness GPT' 

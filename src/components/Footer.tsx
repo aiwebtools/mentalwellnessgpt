@@ -52,7 +52,9 @@ const Footer: React.FC = () => {
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <a 
-                    href={link.href} 
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="text-white/70 hover:text-cyberpunk-cyan transition-colors flex items-center gap-1"
                   >
                     {link.href.startsWith('http') && <ExternalLink size={14} />}
@@ -70,7 +72,9 @@ const Footer: React.FC = () => {
               {legalLinks.map((link, index) => (
                 <li key={index}>
                   <a 
-                    href={link.href} 
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-white/70 hover:text-cyberpunk-pink transition-colors flex items-center gap-1"
                   >
                     <ExternalLink size={14} />
@@ -82,7 +86,9 @@ const Footer: React.FC = () => {
             
             {/* More AI Tools Button */}
             <a 
-              href="https://www.aiwebtools.ai" 
+              href="https://www.aiwebtools.ai"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block py-2 px-6 rounded-full bg-gradient-to-r from-cyberpunk-purple to-cyberpunk-pink text-white font-medium shadow-neon-pink hover:shadow-none transition-all duration-300 btn-glow"
             >
               More AI Tools
@@ -92,7 +98,9 @@ const Footer: React.FC = () => {
         
         <div className="pt-8 mt-8 border-t border-white/10 text-center md:text-left">
           <a 
-            href="https://www.aiwebtools.ai" 
+            href="https://www.aiwebtools.ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white/70 hover:text-white transition-colors"
           >
             © 2025 AI WEB TOOLS LLC All rights reserved.
