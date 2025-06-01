@@ -78,9 +78,14 @@ const VideoSection: React.FC = () => {
           </div>
           
           <div className="mt-8 text-center">
-            <p className="text-white/60 italic text-sm">
+            <p className="text-white/60 italic text-sm mb-4">
               "In helping others, we often find our own healing. This is the philosophy behind Mental Wellness GPT."
             </p>
+            <div className="glass-card p-3 rounded-lg">
+              <p className="text-white/70 text-xs">
+                <strong>Disclaimer:</strong> Mental Wellness GPT is an AI assistance tool and not a replacement for professional therapy or medical treatment. If you're experiencing a mental health crisis, please contact emergency services or a qualified healthcare provider immediately.
+              </p>
+            </div>
           </div>
         </div>
       </div>

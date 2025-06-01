@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
@@ -15,7 +14,7 @@ const Footer: React.FC = () => {
 
   const legalLinks = [
     { name: 'Privacy Policy', href: 'https://openai.com/policies/privacy-policy/' },
-    { name: 'Terms of Service', href: 'https://aiwebtools.ai/terms-of-services' },
+    { name: 'Terms of Service', href: 'https://aiwebtools.lovable.app/disclaimers' },
   ];
 
   return (
