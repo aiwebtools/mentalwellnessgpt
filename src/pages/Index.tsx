@@ -12,7 +12,6 @@ import EmergencyDisclaimer from '@/components/EmergencyDisclaimer';
 import DisclaimerPopup from '@/components/DisclaimerPopup';
 import ElevenLabsWidget from '@/components/ElevenLabsWidget';
 import HeyGenAvatar from '@/components/HeyGenAvatar';
-import TopDisclaimer from '@/components/TopDisclaimer';
 
 const Index = () => {
   return (
@@ -20,7 +19,6 @@ const Index = () => {
       <DisclaimerPopup />
       <Header />
       <div className="mt-[60px]">
-        <TopDisclaimer />
         <EmergencyDisclaimer />
       </div>
       <main>
