@@ -26,14 +26,9 @@ const VideoSection: React.FC = () => {
           </div>
           
           <div className="relative">
-            {/* Video container with fancy border */}
+            {/* Simple video container without any overlays */}
             <div className="relative rounded-xl overflow-hidden shadow-lg">
-              {/* Animated border effect */}
-              <div className="absolute inset-0 rounded-xl p-[2px] pointer-events-none z-10">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-purple to-cyberpunk-pink opacity-50 animate-rotate-slow"></div>
-              </div>
-              
-              {/* Video embed */}
+              {/* Video embed - completely clean without any overlays */}
               <div className="relative aspect-video">
                 <iframe
                   ref={videoRef}
@@ -43,7 +38,7 @@ const VideoSection: React.FC = () => {
                   title="Mental Wellness GPT Inspiration"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="absolute inset-0 w-full h-full"
+                  className="absolute inset-0 w-full h-full rounded-xl"
                 ></iframe>
               </div>
             </div>
