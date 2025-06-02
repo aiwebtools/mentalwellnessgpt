@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
               </div>
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
-                Meet <span className="text-gradient-multi font-display divine-pulse">Bean</span>, Your Virtual Mental Wellness Counselor
+                Meet <span className="text-gradient-multi font-display">Bean</span>, Your Virtual Mental Wellness Counselor
               </h1>
               
               <p className="text-xl text-white/85 leading-relaxed font-medium">
