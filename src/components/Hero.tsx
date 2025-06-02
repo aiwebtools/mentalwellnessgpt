@@ -34,65 +34,93 @@ const Hero: React.FC = () => {
   return (
     <section 
       ref={wrapperRef}
-      className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
       style={{ 
         '--mouse-x': '0.5', 
         '--mouse-y': '0.5'
       } as React.CSSProperties}
     >
-      {/* Dynamic lighting effect based on mouse position */}
+      {/* Enhanced dynamic lighting effect */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-50"
+        className="absolute inset-0 pointer-events-none opacity-60"
         style={{
-          background: 'radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%), rgba(0, 255, 255, 0.15), transparent 30%)'
+          background: `
+            radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%), rgba(0, 255, 255, 0.25), transparent 30%),
+            radial-gradient(circle at calc((1 - var(--mouse-x)) * 100%) calc((1 - var(--mouse-y)) * 100%), rgba(255, 0, 128, 0.2), transparent 35%)
+          `
         }}
       ></div>
       
-      {/* Decorative elements */}
-      <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-cyberpunk-purple/20 blur-3xl -translate-y-1/2"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-cyberpunk-blue/20 blur-3xl"></div>
+      {/* Divine decorative elements */}
+      <div className="absolute top-1/4 left-1/6 w-80 h-80 rounded-full bg-gradient-radial from-cyberpunk-purple/30 to-transparent blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/3 right-1/6 w-96 h-96 rounded-full bg-gradient-radial from-cyberpunk-blue/25 to-transparent blur-3xl animate-pulse-glow"></div>
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-cyberpunk-cyan/10 to-transparent blur-3xl animate-rotate-slow transform -translate-x-1/2 -translate-y-1/2"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4 max-w-xl">
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className={cn(
+              "absolute rounded-full animate-float opacity-40",
+              i % 4 === 0 ? "w-3 h-3 bg-cyberpunk-cyan" :
+              i % 4 === 1 ? "w-2 h-2 bg-cyberpunk-pink" :
+              i % 4 === 2 ? "w-1.5 h-1.5 bg-cyberpunk-yellow" :
+              "w-2.5 h-2.5 bg-cyberpunk-purple"
+            )}
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${4 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-12">
+            <div className="space-y-8 max-w-2xl">
               <div className="inline-block">
-                <span className="px-3 py-1 text-xs rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/90 font-medium">
+                <span className="px-6 py-3 text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50 divine-glow">
                   AI-Powered Mental Health Support
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight">
-                Meet <span className="text-gradient-multi font-display">Bean</span>, Your Virtual Mental Wellness Counselor
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
+                Meet <span className="text-gradient-multi font-display divine-pulse">Bean</span>, Your Virtual Mental Wellness Counselor
               </h1>
               
-              <p className="text-lg text-white/80">
+              <p className="text-xl text-white/85 leading-relaxed font-medium">
                 A safe, judgment-free AI companion designed to provide empathetic guidance and support for your emotional well-being, anytime you need it.
               </p>
             </div>
             
-            <div className="flex flex-wrap gap-4 items-center">
+            <div className="flex flex-wrap gap-6 items-center">
               <a 
                 href="https://chatgpt.com/g/g-n6tK0Sc1u-mental-wellness-gpt" 
-                className="py-3 px-6 rounded-lg bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue text-black font-medium shadow-neon-cyan hover:shadow-none transition-all duration-300 flex items-center gap-2 btn-glow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-4 px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center gap-3 btn-glow transform hover:scale-105 hover:-translate-y-1 border border-white/20"
               >
                 Start Your Session
-                <ArrowRight size={18} />
+                <ArrowRight size={20} className="animate-pulse" />
               </a>
               
               <a 
                 href="#how-it-works" 
-                className="py-3 px-6 rounded-lg glass-card glass-card-hover text-white/90 font-medium transition-all duration-300"
+                className="py-4 px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-lg transition-all duration-500 divine-glow"
               >
                 Learn How It Works
               </a>
             </div>
             
-            <div className="grid grid-cols-2 gap-3 max-w-lg">
+            <div className="grid grid-cols-2 gap-4 max-w-2xl">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <CheckCircle size={16} className="text-cyberpunk-cyan" />
-                  <span className="text-sm text-white/80">{benefit}</span>
+                <div key={index} className="flex items-center gap-3 p-3 rounded-lg glass-card divine-pulse" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <CheckCircle size={18} className="text-cyberpunk-cyan animate-pulse" />
+                  <span className="text-sm text-white/90 font-medium">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -100,61 +128,62 @@ const Hero: React.FC = () => {
           
           <div className="flex justify-center">
             <div className="relative">
-              {/* Decorative hex grid pattern */}
-              <div className="absolute inset-0 cyber-grid opacity-30"></div>
+              {/* Enhanced decorative hex grid pattern */}
+              <div className="absolute inset-0 cyber-grid opacity-40"></div>
               
-              {/* Main visual element */}
-              <div className="relative glass-card rounded-2xl p-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/20 via-cyberpunk-purple/20 to-cyberpunk-pink/20 opacity-50"></div>
+              {/* Main visual element with divine effects */}
+              <div className="relative glass-card rounded-3xl p-2 overflow-hidden divine-glow">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/30 via-cyberpunk-purple/25 to-cyberpunk-pink/30 opacity-60 animate-pulse-glow"></div>
                 
-                <div className="relative p-6 rounded-xl backdrop-blur-md bg-cyberpunk-darkPurple/80 overflow-hidden">
-                  {/* Chat bubbles animation */}
-                  <div className="space-y-4 min-h-[400px]">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-cyberpunk-cyan/30 flex items-center justify-center">
-                        <span className="text-xs font-bold text-cyberpunk-cyan">B</span>
+                <div className="relative p-8 rounded-2xl backdrop-blur-xl bg-cyberpunk-darkPurple/90 overflow-hidden border border-white/20">
+                  {/* Chat bubbles with enhanced animation */}
+                  <div className="space-y-6 min-h-[450px]">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan animate-pulse-glow">
+                        <span className="text-sm font-bold text-black">B</span>
                       </div>
-                      <div className="glass-card p-3 rounded-r-lg rounded-bl-lg max-w-[80%] animate-fade-in">
-                        <p className="text-sm">
+                      <div className="glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in divine-glow">
+                        <p className="text-sm leading-relaxed">
                           Hey there! I'm Bean, your virtual mental health assistant. I'm here for you whenever you need someone to talk to. How are you feeling today?
                         </p>
                       </div>
                     </div>
                     
-                    <div className="flex items-start gap-3 justify-end">
-                      <div className="p-3 rounded-l-lg rounded-br-lg bg-white/10 max-w-[80%] animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                        <p className="text-sm">
+                    <div className="flex items-start gap-4 justify-end">
+                      <div className="p-4 rounded-l-2xl rounded-br-2xl bg-gradient-to-r from-white/15 to-white/10 max-w-[85%] animate-fade-in border border-white/20" style={{ animationDelay: '0.8s' }}>
+                        <p className="text-sm leading-relaxed">
                           I've been feeling overwhelmed with work and personal responsibilities lately.
                         </p>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                        <span className="text-xs font-bold">U</span>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-pink to-cyberpunk-purple flex items-center justify-center shadow-neon-pink">
+                        <span className="text-sm font-bold text-white">U</span>
                       </div>
                     </div>
                     
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-cyberpunk-cyan/30 flex items-center justify-center">
-                        <span className="text-xs font-bold text-cyberpunk-cyan">B</span>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan animate-pulse-glow">
+                        <span className="text-sm font-bold text-black">B</span>
                       </div>
-                      <div className="glass-card p-3 rounded-r-lg rounded-bl-lg max-w-[80%] animate-fade-in" style={{ animationDelay: '1s' }}>
-                        <p className="text-sm">
+                      <div className="glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in divine-glow" style={{ animationDelay: '1.6s' }}>
+                        <p className="text-sm leading-relaxed">
                           I understand how that feels. It's completely normal to feel overwhelmed when juggling multiple responsibilities. Let's explore some strategies that might help you manage these feelings...
                         </p>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Pulsing indicator */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/60 text-xs">
-                    <div className="w-2 h-2 rounded-full bg-cyberpunk-cyan animate-pulse"></div>
-                    <span>Bean is here to listen...</span>
+                  {/* Enhanced pulsing indicator */}
+                  <div className="absolute bottom-6 left-6 flex items-center gap-3 text-white/70 text-sm">
+                    <div className="w-3 h-3 rounded-full bg-cyberpunk-cyan animate-pulse-glow shadow-neon-cyan"></div>
+                    <span className="font-medium">Bean is here to listen...</span>
                   </div>
                 </div>
               </div>
               
-              {/* Decorative elements */}
-              <div className="absolute -top-5 -right-5 w-20 h-20 rounded-full bg-cyberpunk-pink/30 blur-xl"></div>
-              <div className="absolute -bottom-5 -left-5 w-20 h-20 rounded-full bg-cyberpunk-cyan/30 blur-xl"></div>
+              {/* Enhanced decorative elements */}
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-pink/40 to-transparent blur-2xl animate-float"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-cyan/40 to-transparent blur-2xl animate-pulse-glow"></div>
+              <div className="absolute top-1/2 -right-16 w-20 h-20 rounded-full bg-gradient-radial from-cyberpunk-yellow/30 to-transparent blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
         </div>
