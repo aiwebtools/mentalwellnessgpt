@@ -23,12 +23,12 @@ const Hero: React.FC = () => {
   }, []);
 
   const benefits = [
-    "24/7 Emotional Support",
-    "CBT Techniques",
-    "Safe & Confidential",
-    "Personalized Guidance",
-    "No Judgment Zone",
-    "Instant Availability"
+    "24/7 AI Mental Health Support",
+    "CBT Therapy Techniques",
+    "Safe & Confidential AI Tools",
+    "Personalized AI Guidance",
+    "No Judgment AI Zone",
+    "Instant AI Availability"
   ];
 
   return (
@@ -84,16 +84,16 @@ const Hero: React.FC = () => {
             <div className="space-y-8 max-w-2xl">
               <div className="inline-block">
                 <span className="px-6 py-3 text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50 divine-glow">
-                  AI-Powered Mental Health Support
+                  🏆 #1 AI-Powered Mental Health Support Tools
                 </span>
               </div>
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
-                Meet <span className="text-gradient-multi font-display">Bean</span>, Your Virtual Mental Wellness Counselor
+                Meet <span className="text-gradient-multi font-display">Bean</span>, Your Free AI Mental Wellness Counselor from <span className="text-cyberpunk-cyan">AIWEBTOOLS.AI</span>
               </h1>
               
               <p className="text-xl text-white/85 leading-relaxed font-medium">
-                A safe, judgment-free AI companion designed to provide empathetic guidance and support for your emotional well-being, anytime you need it.
+                Access professional-grade <strong className="text-cyberpunk-cyan">free AI tools</strong> for mental wellness, healthcare, and pet care. Bean provides empathetic AI counseling using advanced <strong className="text-cyberpunk-pink">artificial intelligence</strong> and CBT techniques - available 24/7 at <strong className="text-cyberpunk-yellow">AIWEBTOOLS.AI</strong>.
               </p>
             </div>
             
@@ -103,16 +103,18 @@ const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-4 px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center gap-3 btn-glow transform hover:scale-105 hover:-translate-y-1 border border-white/20"
+                aria-label="Start Free AI Mental Wellness Session with Bean"
               >
-                Start Your Session
+                Start Your Free AI Session
                 <ArrowRight size={20} className="animate-pulse" />
               </a>
               
               <a 
                 href="#how-it-works" 
                 className="py-4 px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-lg transition-all duration-500 divine-glow"
+                aria-label="Learn how AI mental wellness tools work"
               >
-                Learn How It Works
+                How AI Tools Work
               </a>
             </div>
             
@@ -123,6 +125,14 @@ const Hero: React.FC = () => {
                   <span className="text-sm text-white/90 font-medium">{benefit}</span>
                 </div>
               ))}
+            </div>
+            
+            {/* SEO-focused content section */}
+            <div className="mt-8 p-6 glass-card rounded-xl border border-cyberpunk-cyan/30">
+              <h2 className="text-lg font-display font-semibold text-cyberpunk-cyan mb-3">Why Choose AIWEBTOOLS.AI?</h2>
+              <p className="text-white/80 text-sm leading-relaxed">
+                <strong>AIWEBTOOLS.AI</strong> is the leading platform for <strong>free AI tools</strong> including Mental Wellness GPT, Doctor GPT, and PetCare GPT. Our <strong>artificial intelligence</strong> solutions provide professional-grade support for mental health, healthcare consultations, and pet care guidance. Join thousands of users who trust our <strong>AI web tools</strong> for reliable, accessible, and innovative artificial intelligence solutions.
+              </p>
             </div>
           </div>
           

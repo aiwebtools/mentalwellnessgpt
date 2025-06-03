@@ -51,38 +51,38 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, col
 const features = [
   {
     icon: <Brain size={24} />,
-    title: "CBT Techniques",
-    description: "Bean uses cognitive behavioral therapy methods to help you identify and reframe negative thought patterns.",
+    title: "AI CBT Therapy Techniques",
+    description: "Bean uses advanced artificial intelligence with cognitive behavioral therapy methods to help identify and reframe negative thought patterns through proven AI counseling techniques.",
     color: "cyan"
   },
   {
     icon: <Heart size={24} />,
-    title: "Empathetic Understanding",
-    description: "Experience genuine empathy through advanced natural language processing that recognizes emotional cues.",
+    title: "Empathetic AI Understanding",
+    description: "Experience genuine empathy through our advanced AI tools that use natural language processing to recognize emotional cues and provide personalized mental health support.",
     color: "pink"
   },
   {
     icon: <Shield size={24} />,
-    title: "Safe & Confidential",
-    description: "All conversations are private and secure, creating a safe space for you to express your feelings openly.",
+    title: "Safe & Confidential AI Tools",
+    description: "All AI conversations are private and secure with enterprise-grade encryption, creating a safe space for mental wellness support through our professional AI web tools.",
     color: "purple"
   },
   {
     icon: <MessageCircle size={24} />,
-    title: "Ongoing Dialogue",
-    description: "Bean keeps the conversation flowing naturally with thoughtful questions that build trust and connection.",
+    title: "Continuous AI Dialogue",
+    description: "Our AI mental wellness tools maintain natural conversations with thoughtful questions that build trust and connection, available 24/7 through AIWEBTOOLS.AI platform.",
     color: "blue"
   },
   {
     icon: <Zap size={24} />,
-    title: "Immediate Support",
-    description: "Access Bean anytime, day or night, for immediate emotional support without waiting for appointments.",
+    title: "Instant AI Mental Health Support",
+    description: "Access Bean and other free AI tools anytime, day or night, for immediate emotional support without waiting for appointments - leading AI healthcare solutions.",
     color: "yellow"
   },
   {
     icon: <UserCheck size={24} />,
-    title: "Personalized Guidance",
-    description: "Receive tailored advice and coping strategies based on your unique situation and emotional needs.",
+    title: "Personalized AI Guidance",
+    description: "Receive tailored advice and coping strategies from our artificial intelligence platform based on your unique situation and emotional needs through advanced AI algorithms.",
     color: "cyan"
   }
 ];
@@ -97,15 +97,15 @@ const Features: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-xl mx-auto text-center mb-16">
           <span className="px-3 py-1 text-xs rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/90 font-medium inline-block mb-4">
-            How Bean Works
+            How Our Free AI Tools Work
           </span>
           
           <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-            Advanced AI Technology With a <span className="text-gradient-multi">Human Touch</span>
+            Advanced <span className="text-gradient-multi">AI Technology</span> With Professional Mental Health Features
           </h2>
           
           <p className="text-white/70">
-            Bean combines cutting-edge artificial intelligence with evidence-based therapeutic approaches to provide meaningful mental wellness support.
+            <strong>AIWEBTOOLS.AI</strong> combines cutting-edge <strong>artificial intelligence</strong> with evidence-based therapeutic approaches. Our <strong>free AI tools</strong> provide meaningful mental wellness support through advanced AI algorithms and professional-grade features.
           </p>
         </div>
         
@@ -120,6 +120,16 @@ const Features: React.FC = () => {
               color={feature.color}
             />
           ))}
+        </div>
+        
+        {/* Additional SEO content */}
+        <div className="mt-16 text-center">
+          <div className="glass-card p-8 rounded-xl max-w-4xl mx-auto">
+            <h3 className="text-2xl font-display font-semibold text-cyberpunk-cyan mb-4">Leading AI Web Tools Platform - AIWEBTOOLS.AI</h3>
+            <p className="text-white/80 leading-relaxed">
+              Our comprehensive suite of <strong>AI tools</strong> includes Mental Wellness GPT for therapy support, Doctor GPT for healthcare consultations, and PetCare GPT for pet health guidance. These <strong>free AI tools</strong> leverage advanced <strong>artificial intelligence</strong> to provide professional-grade assistance across multiple domains. Trust <strong>AIWEBTOOLS.AI</strong> for innovative AI solutions that combine cutting-edge technology with practical, accessible support for your daily needs.
+            </p>
+          </div>
         </div>
       </div>
     </section>
