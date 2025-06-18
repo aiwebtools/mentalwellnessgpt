@@ -95,35 +95,35 @@ const Hero: React.FC = () => {
         ))}
       </div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-12">
             <div className="space-y-8 max-w-2xl">
-              <div className="inline-block">
+              <div className="inline-block w-full">
                 <span className={cn(
-                  "px-6 py-3 text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50",
+                  "inline-block px-3 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50 text-center w-full sm:w-auto",
                   isMobile ? "" : "divine-glow"
                 )}>
                   🏆 #1 AI-Powered Mental Health Support Tools
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight">
                 Meet <span className="text-gradient-multi font-display">Bean</span>, Your Free AI Mental Wellness Counselor from <span className="text-cyberpunk-cyan">AIWEBTOOLS.AI</span>
               </h1>
               
-              <p className="text-xl text-white/85 leading-relaxed font-medium">
+              <p className="text-lg sm:text-xl text-white/85 leading-relaxed font-medium">
                 Access professional-grade <strong className="text-cyberpunk-cyan">free AI tools</strong> for mental wellness, healthcare, and pet care. Bean provides empathetic AI counseling using advanced <strong className="text-cyberpunk-pink">artificial intelligence</strong> and CBT techniques - available 24/7 at <strong className="text-cyberpunk-yellow">AIWEBTOOLS.AI</strong>.
               </p>
             </div>
             
-            <div className="flex flex-wrap gap-6 items-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-6 items-center">
               <a 
                 href="https://chatgpt.com/g/g-n6tK0Sc1u-mental-wellness-gpt" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "py-4 px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center gap-3 transform hover:scale-105 hover:-translate-y-1 border border-white/20",
+                  "w-full sm:w-auto py-4 px-6 sm:px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-base sm:text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center justify-center gap-3 transform hover:scale-105 hover:-translate-y-1 border border-white/20",
                   isMobile ? "" : "btn-glow"
                 )}
                 aria-label="Start Free AI Mental Wellness Session with Bean"
@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
               <a 
                 href="#how-it-works" 
                 className={cn(
-                  "py-4 px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-lg transition-all duration-500",
+                  "w-full sm:w-auto py-4 px-6 sm:px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-base sm:text-lg transition-all duration-500 text-center",
                   isMobile ? "" : "divine-glow"
                 )}
                 aria-label="Learn how AI mental wellness tools work"
