@@ -49,7 +49,21 @@
     background-size: 300% 300%, 300% 300%, 300% 300%, 300% 300%, 400% 400%, 200% 200%;
     background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 50% 50%, 0% 0%;
     background-attachment: fixed;
-    animation: divine-flow 20s ease-in-out infinite;
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (max-width: 768px) {
+    body {
+      animation: none;
+      background-attachment: scroll;
+    }
+  }
+
+  /* Desktop animations */
+  @media (min-width: 769px) {
+    body {
+      animation: divine-flow 20s ease-in-out infinite;
+    }
   }
 
   @keyframes divine-flow {
@@ -76,19 +90,31 @@
   .text-gradient-cyan {
     @apply bg-gradient-to-r from-cyberpunk-cyan via-white to-cyberpunk-blue bg-clip-text text-transparent;
     background-size: 200% 200%;
-    animation: divine-shimmer 4s ease-in-out infinite;
   }
   
   .text-gradient-pink {
     @apply bg-gradient-to-r from-cyberpunk-pink via-white to-cyberpunk-purple bg-clip-text text-transparent;
     background-size: 200% 200%;
-    animation: divine-shimmer 4s ease-in-out infinite reverse;
   }
   
   .text-gradient-multi {
     @apply bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-purple via-white via-cyberpunk-pink to-cyberpunk-yellow bg-clip-text text-transparent;
     background-size: 300% 300%;
-    animation: divine-rainbow 6s ease-in-out infinite;
+  }
+
+  /* Conditional animations - only on desktop */
+  @media (min-width: 769px) {
+    .text-gradient-cyan {
+      animation: divine-shimmer 4s ease-in-out infinite;
+    }
+    
+    .text-gradient-pink {
+      animation: divine-shimmer 4s ease-in-out infinite reverse;
+    }
+    
+    .text-gradient-multi {
+      animation: divine-rainbow 6s ease-in-out infinite;
+    }
   }
 
   @keyframes divine-shimmer {
@@ -161,7 +187,13 @@
   .cyber-grid {
     background-size: 60px 60px;
     @apply bg-cyber-grid;
-    animation: grid-flow 15s linear infinite;
+  }
+
+  /* Only animate grid on desktop */
+  @media (min-width: 769px) {
+    .cyber-grid {
+      animation: grid-flow 15s linear infinite;
+    }
   }
 
   @keyframes grid-flow {
@@ -225,22 +257,24 @@
     }
   }
 
-  /* Divine Effects */
+  /* Divine Effects - simplified for mobile */
   .divine-glow {
     position: relative;
   }
 
-  .divine-glow::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    padding: 2px;
-    background: linear-gradient(45deg, #00FFFF, #7928CA, #FF0080, #F5A623, #0070F3);
-    background-size: 400% 400%;
-    border-radius: inherit;
-    opacity: 0.7;
-    animation: divine-border 8s ease-in-out infinite;
-    z-index: -1;
+  @media (min-width: 769px) {
+    .divine-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      padding: 2px;
+      background: linear-gradient(45deg, #00FFFF, #7928CA, #FF0080, #F5A623, #0070F3);
+      background-size: 400% 400%;
+      border-radius: inherit;
+      opacity: 0.7;
+      animation: divine-border 8s ease-in-out infinite;
+      z-index: -1;
+    }
   }
 
   @keyframes divine-border {
@@ -258,7 +292,12 @@
       transparent
     );
     background-size: 200% 100%;
-    animation: holy-shine 3s infinite;
+  }
+
+  @media (min-width: 769px) {
+    .holy-shimmer {
+      animation: holy-shine 3s infinite;
+    }
   }
 
   @keyframes holy-shine {
@@ -267,7 +306,13 @@
   }
 
   .divine-pulse {
-    animation: divine-pulse-animation 4s ease-in-out infinite;
+    /* Base mobile styles without animation */
+  }
+
+  @media (min-width: 769px) {
+    .divine-pulse {
+      animation: divine-pulse-animation 4s ease-in-out infinite;
+    }
   }
 
   @keyframes divine-pulse-animation {
@@ -282,6 +327,15 @@
         0 0 40px rgba(0, 255, 255, 0.6),
         0 0 80px rgba(121, 40, 202, 0.4),
         0 0 120px rgba(255, 0, 128, 0.2);
+    }
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 }

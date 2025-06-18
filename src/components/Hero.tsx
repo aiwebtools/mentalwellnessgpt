@@ -2,11 +2,16 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
+    // Only enable mouse tracking on desktop to prevent mobile issues
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       if (!wrapperRef.current) return;
       
@@ -20,7 +25,7 @@ const Hero: React.FC = () => {
     
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   const benefits = [
     "24/7 AI Mental Health Support",
@@ -40,33 +45,45 @@ const Hero: React.FC = () => {
         '--mouse-y': '0.5'
       } as React.CSSProperties}
     >
-      {/* Enhanced dynamic lighting effect */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-60"
-        style={{
-          background: `
-            radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%), rgba(0, 255, 255, 0.25), transparent 30%),
-            radial-gradient(circle at calc((1 - var(--mouse-x)) * 100%) calc((1 - var(--mouse-y)) * 100%), rgba(255, 0, 128, 0.2), transparent 35%)
-          `
-        }}
-      ></div>
+      {/* Dynamic lighting effect - disabled on mobile */}
+      {!isMobile && (
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-60"
+          style={{
+            background: `
+              radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%), rgba(0, 255, 255, 0.25), transparent 30%),
+              radial-gradient(circle at calc((1 - var(--mouse-x)) * 100%) calc((1 - var(--mouse-y)) * 100%), rgba(255, 0, 128, 0.2), transparent 35%)
+            `
+          }}
+        ></div>
+      )}
       
-      {/* Divine decorative elements */}
-      <div className="absolute top-1/4 left-1/6 w-80 h-80 rounded-full bg-gradient-radial from-cyberpunk-purple/30 to-transparent blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/3 right-1/6 w-96 h-96 rounded-full bg-gradient-radial from-cyberpunk-blue/25 to-transparent blur-3xl animate-pulse-glow"></div>
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-cyberpunk-cyan/10 to-transparent blur-3xl animate-rotate-slow transform -translate-x-1/2 -translate-y-1/2"></div>
+      {/* Simplified decorative elements for mobile */}
+      <div className={cn(
+        "absolute top-1/4 left-1/6 w-80 h-80 rounded-full bg-gradient-radial from-cyberpunk-purple/30 to-transparent blur-3xl",
+        isMobile ? "" : "animate-float"
+      )}></div>
+      <div className={cn(
+        "absolute bottom-1/3 right-1/6 w-96 h-96 rounded-full bg-gradient-radial from-cyberpunk-blue/25 to-transparent blur-3xl",
+        isMobile ? "animate-pulse" : "animate-pulse-glow"
+      )}></div>
+      <div className={cn(
+        "absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-cyberpunk-cyan/10 to-transparent blur-3xl transform -translate-x-1/2 -translate-y-1/2",
+        isMobile ? "" : "animate-rotate-slow"
+      )}></div>
       
-      {/* Floating particles */}
+      {/* Reduced floating particles on mobile */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(isMobile ? 6 : 12)].map((_, i) => (
           <div
             key={i}
             className={cn(
-              "absolute rounded-full animate-float opacity-40",
+              "absolute rounded-full opacity-40",
               i % 4 === 0 ? "w-3 h-3 bg-cyberpunk-cyan" :
               i % 4 === 1 ? "w-2 h-2 bg-cyberpunk-pink" :
               i % 4 === 2 ? "w-1.5 h-1.5 bg-cyberpunk-yellow" :
-              "w-2.5 h-2.5 bg-cyberpunk-purple"
+              "w-2.5 h-2.5 bg-cyberpunk-purple",
+              isMobile ? "" : "animate-float"
             )}
             style={{
               top: `${Math.random() * 100}%`,
@@ -83,7 +100,10 @@ const Hero: React.FC = () => {
           <div className="space-y-12">
             <div className="space-y-8 max-w-2xl">
               <div className="inline-block">
-                <span className="px-6 py-3 text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50 divine-glow">
+                <span className={cn(
+                  "px-6 py-3 text-sm rounded-full backdrop-blur-xl bg-white/15 border border-white/30 text-white/95 font-semibold shadow-neon-cyan/50",
+                  isMobile ? "" : "divine-glow"
+                )}>
                   🏆 #1 AI-Powered Mental Health Support Tools
                 </span>
               </div>
@@ -102,16 +122,22 @@ const Hero: React.FC = () => {
                 href="https://chatgpt.com/g/g-n6tK0Sc1u-mental-wellness-gpt" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-4 px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center gap-3 btn-glow transform hover:scale-105 hover:-translate-y-1 border border-white/20"
+                className={cn(
+                  "py-4 px-8 rounded-xl bg-gradient-to-r from-cyberpunk-cyan via-cyberpunk-blue to-cyberpunk-purple text-black font-bold text-lg shadow-neon-cyan hover:shadow-neon-pink transition-all duration-500 flex items-center gap-3 transform hover:scale-105 hover:-translate-y-1 border border-white/20",
+                  isMobile ? "" : "btn-glow"
+                )}
                 aria-label="Start Free AI Mental Wellness Session with Bean"
               >
                 Start Your Free AI Session
-                <ArrowRight size={20} className="animate-pulse" />
+                <ArrowRight size={20} className={isMobile ? "" : "animate-pulse"} />
               </a>
               
               <a 
                 href="#how-it-works" 
-                className="py-4 px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-lg transition-all duration-500 divine-glow"
+                className={cn(
+                  "py-4 px-8 rounded-xl glass-card glass-card-hover text-white/95 font-semibold text-lg transition-all duration-500",
+                  isMobile ? "" : "divine-glow"
+                )}
                 aria-label="Learn how AI mental wellness tools work"
               >
                 How AI Tools Work
@@ -120,8 +146,15 @@ const Hero: React.FC = () => {
             
             <div className="grid grid-cols-2 gap-4 max-w-2xl">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 rounded-lg glass-card divine-pulse" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <CheckCircle size={18} className="text-cyberpunk-cyan animate-pulse" />
+                <div 
+                  key={index} 
+                  className={cn(
+                    "flex items-center gap-3 p-3 rounded-lg glass-card",
+                    isMobile ? "" : "divine-pulse"
+                  )} 
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <CheckCircle size={18} className={cn("text-cyberpunk-cyan", isMobile ? "" : "animate-pulse")} />
                   <span className="text-sm text-white/90 font-medium">{benefit}</span>
                 </div>
               ))}
@@ -138,21 +171,33 @@ const Hero: React.FC = () => {
           
           <div className="flex justify-center">
             <div className="relative">
-              {/* Enhanced decorative hex grid pattern */}
-              <div className="absolute inset-0 cyber-grid opacity-40"></div>
+              {/* Enhanced decorative hex grid pattern - simplified for mobile */}
+              <div className={cn("absolute inset-0 opacity-40", isMobile ? "" : "cyber-grid")}></div>
               
-              {/* Main visual element with divine effects */}
-              <div className="relative glass-card rounded-3xl p-2 overflow-hidden divine-glow">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/30 via-cyberpunk-purple/25 to-cyberpunk-pink/30 opacity-60 animate-pulse-glow"></div>
+              {/* Main visual element with conditional effects */}
+              <div className={cn(
+                "relative glass-card rounded-3xl p-2 overflow-hidden",
+                isMobile ? "" : "divine-glow"
+              )}>
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/30 via-cyberpunk-purple/25 to-cyberpunk-pink/30 opacity-60",
+                  isMobile ? "animate-pulse" : "animate-pulse-glow"
+                )}></div>
                 
                 <div className="relative p-8 rounded-2xl backdrop-blur-xl bg-cyberpunk-darkPurple/90 overflow-hidden border border-white/20">
-                  {/* Chat bubbles with enhanced animation */}
+                  {/* Chat bubbles with conditional animation */}
                   <div className="space-y-6 min-h-[450px]">
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan animate-pulse-glow">
+                      <div className={cn(
+                        "w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan",
+                        isMobile ? "" : "animate-pulse-glow"
+                      )}>
                         <span className="text-sm font-bold text-black">B</span>
                       </div>
-                      <div className="glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in divine-glow">
+                      <div className={cn(
+                        "glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in",
+                        isMobile ? "" : "divine-glow"
+                      )}>
                         <p className="text-sm leading-relaxed">
                           Hey there! I'm Bean, your virtual mental health assistant. I'm here for you whenever you need someone to talk to. How are you feeling today?
                         </p>
@@ -171,10 +216,16 @@ const Hero: React.FC = () => {
                     </div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan animate-pulse-glow">
+                      <div className={cn(
+                        "w-10 h-10 rounded-full bg-gradient-to-r from-cyberpunk-cyan to-cyberpunk-blue flex items-center justify-center shadow-neon-cyan",
+                        isMobile ? "" : "animate-pulse-glow"
+                      )}>
                         <span className="text-sm font-bold text-black">B</span>
                       </div>
-                      <div className="glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in divine-glow" style={{ animationDelay: '1.6s' }}>
+                      <div className={cn(
+                        "glass-card p-4 rounded-r-2xl rounded-bl-2xl max-w-[85%] animate-fade-in",
+                        isMobile ? "" : "divine-glow"
+                      )} style={{ animationDelay: '1.6s' }}>
                         <p className="text-sm leading-relaxed">
                           I understand how that feels. It's completely normal to feel overwhelmed when juggling multiple responsibilities. Let's explore some strategies that might help you manage these feelings...
                         </p>
@@ -184,16 +235,28 @@ const Hero: React.FC = () => {
                   
                   {/* Enhanced pulsing indicator */}
                   <div className="absolute bottom-6 left-6 flex items-center gap-3 text-white/70 text-sm">
-                    <div className="w-3 h-3 rounded-full bg-cyberpunk-cyan animate-pulse-glow shadow-neon-cyan"></div>
+                    <div className={cn(
+                      "w-3 h-3 rounded-full bg-cyberpunk-cyan shadow-neon-cyan",
+                      isMobile ? "animate-pulse" : "animate-pulse-glow"
+                    )}></div>
                     <span className="font-medium">Bean is here to listen...</span>
                   </div>
                 </div>
               </div>
               
-              {/* Enhanced decorative elements */}
-              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-pink/40 to-transparent blur-2xl animate-float"></div>
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-cyan/40 to-transparent blur-2xl animate-pulse-glow"></div>
-              <div className="absolute top-1/2 -right-16 w-20 h-20 rounded-full bg-gradient-radial from-cyberpunk-yellow/30 to-transparent blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
+              {/* Simplified decorative elements for mobile */}
+              <div className={cn(
+                "absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-pink/40 to-transparent blur-2xl",
+                isMobile ? "" : "animate-float"
+              )}></div>
+              <div className={cn(
+                "absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-gradient-radial from-cyberpunk-cyan/40 to-transparent blur-2xl",
+                isMobile ? "animate-pulse" : "animate-pulse-glow"
+              )}></div>
+              <div className={cn(
+                "absolute top-1/2 -right-16 w-20 h-20 rounded-full bg-gradient-radial from-cyberpunk-yellow/30 to-transparent blur-xl",
+                isMobile ? "" : "animate-float"
+              )} style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
         </div>
