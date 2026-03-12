@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     { name: 'PetCare GPT - AI Pet Health Tool', href: 'https://petcaregpt.lovable.app/' },
     { name: 'AI Tools FAQ', href: '#faq' },
     { name: 'AI Tools Disclaimer', href: '#disclaimer' },
-    { name: 'More Free AI Tools - AIWEBTOOLS.AI', href: 'https://www.aiwebtools.ai' },
+    { name: 'More Free AI Tools - AIWEBTOOLS.AI', href: 'https://aiwebtools.lovable.app/?via=aiwebtools' },
   ];
 
   const legalLinks = [
@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
             {/* Enhanced More AI Tools Button with SEO focus */}
             <div className="relative">
               <a 
-                href="https://www.aiwebtools.ai"
+                href="https://aiwebtools.lovable.app/?via=aiwebtools"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center w-full py-6 px-8 rounded-2xl bg-gradient-to-r from-cyberpunk-purple via-cyberpunk-pink to-cyberpunk-cyan text-white font-bold text-lg shadow-neon-pink hover:shadow-neon-cyan transition-all duration-700 btn-glow transform hover:scale-110 hover:-translate-y-2 border border-white/30 overflow-hidden"
@@ -151,7 +151,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
           <a 
-            href="https://www.aiwebtools.ai"
+            href="https://aiwebtools.lovable.app/?via=aiwebtools"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/80 hover:text-white transition-all duration-300 text-xl font-medium hover:text-gradient-multi"
