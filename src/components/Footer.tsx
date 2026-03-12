@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     { name: 'PetCare GPT - AI Pet Health Tool', href: 'https://petcaregpt.lovable.app/' },
     { name: 'AI Tools FAQ', href: '#faq' },
     { name: 'AI Tools Disclaimer', href: '#disclaimer' },
-    { name: 'More Free AI Tools - AIWEBTOOLS.AI', href: 'https://www.aiwebtools.ai' },
+    { name: 'More Free AI Tools - AIWEBTOOLS.AI', href: 'https://aiwebtools.lovable.app/?via=aiwebtools' },
   ];
 
   const legalLinks = [
