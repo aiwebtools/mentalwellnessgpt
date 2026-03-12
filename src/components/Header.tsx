@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     { name: 'PetCare GPT', href: 'https://petcaregpt.lovable.app/' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Disclaimer', href: '#disclaimer' },
-    { name: 'More AI Tools', href: 'https://www.aiwebtools.ai' },
+    { name: 'More AI Tools', href: 'https://aiwebtools.lovable.app/?via=aiwebtools' },
   ];
 
   return (
